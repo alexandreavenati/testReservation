@@ -52,9 +52,9 @@ $name = "Guillaume L'Heureux";
 $place = "Château de Versailles";
 $startDate = new DateTime("25-05-15");
 $endDate = new DateTime("25-06-02");
-$cleaningOption = true;
+$cleaningOption = false;
 
-// création de la réservation (paramètres nécessaires car la fonction "__construct" doit avoir des paramètres pour fonctionner)
+// création de la réservation (paramètres nécessaires car la fonction "__construct" a des paramètres pour fonctionner)
 $reservation = new Reservation($name, $place, $startDate, $endDate, $cleaningOption);
 
 var_dump($reservation);die;
