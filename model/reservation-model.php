@@ -33,7 +33,7 @@ class Reservation
 
         $this->nightPrice = 1000;
 
-        // vérification de l'option de nettoyage
+        // vérification de l'option de nettoyage (choisi ou pas)
         if ($cleaningOption === true) {
             // valeurs calculées automatiquement 
             $totalPrice = (($this->endDate->getTimestamp() - $this->startDate->getTimestamp()) / (3600 * 24) * $this->nightPrice) + 5000;
