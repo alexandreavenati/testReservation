@@ -65,7 +65,7 @@ $cleaningOption = false;
 // création de la réservation (paramètres nécessaires car la fonction "__construct" a des paramètres pour fonctionner)
 $reservation = new Reservation($name, $place, $startDate, $endDate, $cleaningOption);
 
-// Appel de la fonction "cancel" sur l'objet "reservation"
+// Appel de la fonction "cancel" sur l'objet "reservation" pour révoquer la demande de réservation
 $reservation->cancel();
 
 var_dump($reservation);
