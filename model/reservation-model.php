@@ -42,4 +42,4 @@ class Reservation {
 // création de la réservation
 $reservation = new Reservation();
 
-var_dump($this); die;
+var_dump($reservation); die;
