@@ -1,6 +1,7 @@
 <?php
 // création d'une classe
-class Reservation {
+class Reservation
+{
     // création des variables de la classe qui correspondent aux éléments de la réservation
     public $name;
 
@@ -20,18 +21,25 @@ class Reservation {
 
     public $cleaningOption;
 
-    public function __construct() {
+    // ajout de paramètres sur les valeurs qui ont tendances à changer selon les réservations
+    public function __construct($name, $place, $startDate, $endDate, $cleaningOption)
+    {
         // valeurs envoyées par l'utilisateur
-        $this->name = "Guillaume L'Heureux";
-        $this->place = "Château de Versailles";
-        $this->startDate = new DateTime("25-04-15");
-        $this->endDate = new DateTime("25-05-28");
-        $this->cleaningOption = true;
+        $this->name = $name;
+        $this->place = $place;
+        $this->startDate = $startDate;
+        $this->endDate = $endDate;
+        $this->cleaningOption = $cleaningOption;
 
         $this->nightPrice = 1000;
 
-        // valeurs calculées automatiquement 
-        $totalPrice = (($this->endDate->getTimestamp() - $this->startDate->getTimestamp()) / (3600 * 24) * $this->nightPrice) + 5000;
+        // vérification de l'option de nettoyage
+        if ($cleaningOption === true) {
+            // valeurs calculées automatiquement 
+            $totalPrice = (($this->endDate->getTimestamp() - $this->startDate->getTimestamp()) / (3600 * 24) * $this->nightPrice) + 5000;
+        } else {
+            $totalPrice = (($this->endDate->getTimestamp() - $this->startDate->getTimestamp()) / (3600 * 24) * $this->nightPrice);
+        }
 
         $this->totalPrice = $totalPrice;
         $this->bookedAt = new DateTime();
@@ -39,7 +47,14 @@ class Reservation {
     }
 }
 
-// création de la réservation
-$reservation = new Reservation();
+// exemple de valeurs envoyées par un utilisateur
+$name = "Guillaume L'Heureux";
+$place = "Château de Versailles";
+$startDate = new DateTime("25-05-15");
+$endDate = new DateTime("25-06-02");
+$cleaningOption = true;
 
-var_dump($reservation); die;
+// création de la réservation (paramètres nécessaires car la fonction "__construct" doit avoir des paramètres pour fonctionner)
+$reservation = new Reservation($name, $place, $startDate, $endDate, $cleaningOption);
+
+var_dump($reservation);die;
