@@ -45,6 +45,14 @@ class Reservation
         $this->bookedAt = new DateTime();
         $this->status = "CART";
     }
+
+    // création d'une fonction "cancel"
+    public function cancel() {
+        // si le statut de la réservation est "CART" alors on peut passer le statut en "CANCELLED"
+        if ($this->status === "CART") {
+            $this->status = "CANCELLED";
+        }
+    }
 }
 
 // exemple de valeurs envoyées par un utilisateur
@@ -57,4 +65,8 @@ $cleaningOption = false;
 // création de la réservation (paramètres nécessaires car la fonction "__construct" a des paramètres pour fonctionner)
 $reservation = new Reservation($name, $place, $startDate, $endDate, $cleaningOption);
 
-var_dump($reservation);die;
+// Appel de la fonction "cancel" sur l'objet "reservation"
+$reservation->cancel();
+
+var_dump($reservation);
+die;
