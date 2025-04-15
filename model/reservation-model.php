@@ -31,8 +31,23 @@ class Reservation
 
     // ajout de paramètres sur les valeurs qui ont tendances à changer selon les réservations 
     // (méthode pour réaliser une réservation)
-    public function __construct($name, $place, $startDate, $endDate, $cleaningOption)
-    {
+    public function __construct($name, $place, $startDate, $endDate, $cleaningOption) {
+
+        // Création d'exceptions (erreur)
+        if ($startDate > $endDate) {
+            throw new Exception("La réservation n'est pas valide !");
+        } else {
+            $interval = $startDate->diff($endDate);
+
+            if ($interval->days < 2) {
+                throw new Exception("La réservation doit durer au moins 2 jours !");
+            }
+        }
+
+        if (empty($startDate) || empty($endDate)) {
+            throw new Exception("La réservation n'est pas valide");
+        }
+
         // valeurs envoyées par l'utilisateur
         $this->name = $name;
         $this->place = $place;

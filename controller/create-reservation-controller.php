@@ -28,14 +28,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $cleaningOption = false;
     }
 
+    try {
 
-    $reservation = new Reservation($name, $place, $startDate, $endDate, $cleaningOption);
+        // création de la réservation
+        $reservation = new Reservation($name, $place, $startDate, $endDate, $cleaningOption);
 
-    if ($startDate < $endDate) {
-        // Message qui sera envoyé
-        $message = "Votre réservation est confirmée, au prix de " . $reservation->totalPrice . ".";
-    }else {
-        $message = "Votre demande de réservation n'est pas valide !";
+        // Si tout est en ordre ce message s'affiche
+        $message = "Votre réservation est confirmée, au prix de " . $reservation->totalPrice;
+
+    } catch (Exception $e) {
+
+        // Sinon le message de l'Exception du modèle est transmis
+        $message = $e->getMessage();
+
     }
 }
 
