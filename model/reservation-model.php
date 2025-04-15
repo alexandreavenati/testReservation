@@ -34,7 +34,16 @@ class Reservation
     public function __construct($name, $place, $startDate, $endDate, $cleaningOption) {
 
         // Création d'exceptions (erreur)
-        if ($startDate > $endDate) {
+        if (strlen($name) < 3) {
+            throw new Exception("Veuillez mettre un nom valide !");
+        }
+
+        // Vérification de l'emplacement (il doit être choisi)
+        if (empty($place)) {
+            throw new Exception("Veuillez choisir un emplacement pour votre réservation !");
+        }
+
+        if ($startDate > $endDate || $startDate < new DateTime()) {
             throw new Exception("La réservation n'est pas valide !");
         } else {
             $interval = $startDate->diff($endDate);
@@ -42,10 +51,6 @@ class Reservation
             if ($interval->days < 2) {
                 throw new Exception("La réservation doit durer au moins 2 jours !");
             }
-        }
-
-        if (empty($startDate) || empty($endDate)) {
-            throw new Exception("La réservation n'est pas valide");
         }
 
         // valeurs envoyées par l'utilisateur

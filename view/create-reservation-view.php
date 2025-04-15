@@ -8,13 +8,13 @@
     <form method="POST">
         <div>
             <label for="name">Nom
-                <input required type="text" placeholder="Entrez votre nom..." id="name" name="name">
+                <input type="text" placeholder="Entrez votre nom..." id="name" name="name">
             </label>
         </div>
 
         <div>
             <label for="place">Place
-                <select name="place" id="place" required>
+                <select name="place" id="place">
                     <option disabled selected value="">--Veuillez choisir un endroit--</option>
                     <option value="Chateau_versailles">Château de Versailles</option>
                     <option value="ZAD_Limoges">ZAD de Limoges</option>
@@ -26,13 +26,13 @@
 
         <div>
             <label for="startDate">Date de début
-                <input required type="date" name="startDate" id="startDate">
+                <input type="date" name="startDate" id="startDate">
             </label>
         </div>
 
         <div>
             <label for="endDate">Date de fin
-                <input required type="date" name="endDate" id="endDate">
+                <input type="date" name="endDate" id="endDate">
             </label>
         </div>
 
