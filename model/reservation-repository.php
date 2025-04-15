@@ -8,6 +8,7 @@ function findReservationForUser()
     }
 
     if (array_key_exists("reservation", $_SESSION)) {
+        
         return $_SESSION["reservation"];
     }
 }
