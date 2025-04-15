@@ -40,13 +40,13 @@ class Reservation
         }
 
         // Vérification de l'emplacement (il doit être choisi)
-        if (empty($place)) {
+        if (!isset($place)) {
             throw new Exception("Veuillez choisir un emplacement pour votre réservation !");
         }
 
         // Vérification de la validité des dates
         if ($startDate > $endDate || $startDate < new DateTime()) {
-            throw new Exception("La réservation n'est pas valide !");
+            throw new Exception("La date de réservation n'est pas valide !");
         } else {
             $interval = $startDate->diff($endDate);
 

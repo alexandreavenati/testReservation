@@ -48,8 +48,20 @@
 
     </form>
 
-    <!-- Envoi du message -->
-    <h3><?php echo $message ?></h3>
+        <div>
+            <h3><?php echo $errorMessage; ?></h3>
+        </div>
+
+    <?php if (!is_null($reservation)) { ?>
+        <div>
+            <p>Nom : <?php echo $reservation->name; ?></p>
+            <p>Lieu : <?php echo $reservation->place; ?></p>
+            <p>Date de début : <?php echo $reservation->startDate->format('d-m-y'); ?></p>
+            <p>Date de fin : <?php echo $reservation->endDate->format('d-m-y'); ?></p>
+            <p>Option de ménage : <?php echo $reservation->cleaningOption ? "oui" : "non"; ?></p>
+            <p>Prix total : <?php echo $reservation->totalPrice ?></p>
+        </div>
+    <?php } ?>
 
 </section>
 
