@@ -54,14 +54,14 @@
     </div>
 
     <!-- Résumé de la réservation si il y en a une -->
-    <?php if (!is_null($reservation)) { ?>
+    <?php if (!is_null($reservationForUser)) { ?>
         <div>
-            <p>Nom : <?php echo $reservation->name; ?></p>
-            <p>Lieu : <?php echo str_replace('_', ' ', $reservation->place); ?></p>
-            <p>Date de début : <?php echo $reservation->startDate->format('d-m-y'); ?></p>
-            <p>Date de fin : <?php echo $reservation->endDate->format('d-m-y'); ?></p>
-            <p>Option de ménage : <?php echo $reservation->cleaningOption ? "oui" : "non"; ?></p>
-            <p>Prix total : <?php echo $reservation->totalPrice ?></p>
+            <p><strong>Nom : <?php echo $reservationForUser->name; ?></strong></p>
+            <p><strong>Lieu : <?php echo str_replace('_', ' ', $reservationForUser->place); ?></strong></p>
+            <p><strong>Date de début : <?php echo $reservationForUser->startDate->format('d-m-y'); ?></strong></p>
+            <p><strong>Date de fin : <?php echo $reservationForUser->endDate->format('d-m-y'); ?></strong></p>
+            <p><strong>Option de ménage : <?php echo $reservationForUser->cleaningOption ? "oui" : "non"; ?></strong></p>
+            <p><strong>Prix total : <?php echo $reservationForUser->totalPrice ?></strong></p>
         </div>
     <?php } ?>
 
