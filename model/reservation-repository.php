@@ -9,8 +9,6 @@ function findReservationForUser() {
 
 function persistReservation($reservation) {
 
-	session_start();
-
 	$_SESSION["reservation"] = $reservation;
-
+    
 }
