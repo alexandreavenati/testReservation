@@ -48,10 +48,12 @@
 
     </form>
 
-        <div>
-            <h3><?php echo $errorMessage; ?></h3>
-        </div>
+    <!-- Message d'erreur si il y en a -->
+    <div>
+        <h3><?php echo $errorMessage; ?></h3>
+    </div>
 
+    <!-- Résumé de la réservation si il y en a une -->
     <?php if (!is_null($reservation)) { ?>
         <div>
             <p>Nom : <?php echo $reservation->name; ?></p>
