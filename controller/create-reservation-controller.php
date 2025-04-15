@@ -6,30 +6,33 @@ require_once('../model/reservation-model.php');
 $reservation = null;
 $errorMessage = "";
 
-// Vérifie l'nevoi du formulaire
+// Vérifie l'envoi du formulaire
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    try {
-        // Récupération des données envoyées par le formulaire
-        $name = $_POST['name'];
 
-        // Obligé de vérifier car c'est un select donc l'utilisateur est obligé de faire un choix
-        $place = isset($_POST['place']);
-        var_dump($place);
+    // Récupération des données envoyées par le formulaire
+    $name = $_POST['name'];
 
-        // Les données envoyées pour les dates dans le formulaire sont en chaînes de caractères donc on doit créer des DateTime pour
-        // que ça fonctionne
-        $startDate = new DateTime($_POST['startDate']);
-        $endDate = new DateTime($_POST['endDate']);
+    // Vérification de l'existence de 'place' dans $_POST avant d'y accéder
+    // "?" est un opérateur ternaire (forme abrégée d'une instruction conditionnelle "if/else"
+    // qui permet de rendre le code plus compact)
+    $place = isset($_POST['place']) ? $_POST['place'] : '';
 
-        // Je vérifie si "cleaningOption" est existant et validé puis je change sa valeur en booléen
-        $cleaningOption = isset($_POST['cleaningOption']) && $_POST['cleaningOption'] === "on" ? true : false;
+    // Récupération des dates
+    $startDate = new DateTime($_POST['startDate']);
+    $endDate = new DateTime($_POST['endDate']);
 
-        // création de la réservation
-        $reservation = new Reservation($name, $place, $startDate, $endDate, $cleaningOption);
-    } catch (Exception $e) {
+    // Vérifie si "cleaningOption" est existant et validé puis on change sa valeur en booléen
+    $cleaningOption = isset($_POST['cleaningOption']) && $_POST['cleaningOption'] === "on" ? true : false;
 
-        // Sinon le message de l'Exception du modèle est transmis
-        $errorMessage = $e->getMessage();
+    // Si aucun message d'erreur, on essaie de créer la réservation
+    if (empty($errorMessage)) {
+        try {
+            // création de la réservation
+            $reservation = new Reservation($name, $place, $startDate, $endDate, $cleaningOption);
+        } catch (Exception $e) {
+            // Sinon le message de l'Exception du model est transmis
+            $errorMessage = $e->getMessage();
+        }
     }
 }
 

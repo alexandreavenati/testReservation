@@ -40,7 +40,7 @@ class Reservation
         }
 
         // Vérification de l'emplacement (il doit être choisi)
-        if (!isset($place)) {
+        if (empty($place) || !is_string($place)) {
             throw new Exception("Veuillez choisir un emplacement pour votre réservation !");
         }
 

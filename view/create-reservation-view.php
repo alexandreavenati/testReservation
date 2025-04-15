@@ -16,10 +16,10 @@
             <label for="place">Place
                 <select name="place" id="place">
                     <option disabled selected value="">--Veuillez choisir un endroit--</option>
-                    <option value="Chateau_versailles">Château de Versailles</option>
-                    <option value="ZAD_Limoges">ZAD de Limoges</option>
+                    <option value="Chateau_de_Versailles">Château de Versailles</option>
+                    <option value="ZAD_de_Limoges">ZAD de Limoges</option>
                     <option value="Renault_Clio">Renault Clio</option>
-                    <option value="Maison_campagne">Maison de campagne</option>
+                    <option value="Maison_de_campagne">Maison de campagne</option>
                 </select>
             </label>
         </div>
@@ -55,7 +55,7 @@
     <?php if (!is_null($reservation)) { ?>
         <div>
             <p>Nom : <?php echo $reservation->name; ?></p>
-            <p>Lieu : <?php echo $reservation->place; ?></p>
+            <p>Lieu : <?php echo str_replace('_', ' ', $reservation->place); ?></p>
             <p>Date de début : <?php echo $reservation->startDate->format('d-m-y'); ?></p>
             <p>Date de fin : <?php echo $reservation->endDate->format('d-m-y'); ?></p>
             <p>Option de ménage : <?php echo $reservation->cleaningOption ? "oui" : "non"; ?></p>
