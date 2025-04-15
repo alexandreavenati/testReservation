@@ -1,14 +1,22 @@
 <?php
-function findReservationForUser() {
+function findReservationForUser(){
 
-	session_start();
+    if (session_status() === PHP_SESSION_NONE) {
 
-	return $_SESSION["reservation"];
+        session_start();
 
+    }
+
+    return $_SESSION["reservation"];
 }
 
-function persistReservation($reservation) {
+function persistReservation($reservation){
 
-	$_SESSION["reservation"] = $reservation;
-    
+    if (session_status() === PHP_SESSION_NONE) {
+
+        session_start();
+
+    }
+
+    $_SESSION["reservation"] = $reservation;
 }
