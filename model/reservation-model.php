@@ -84,22 +84,3 @@ class Reservation
         }
     }
 }
-
-// exemple de valeurs envoyées par un utilisateur
-$name = "Guillaume L'Heureux";
-$place = "Château de Versailles";
-$startDate = new DateTime("25-05-15");
-$endDate = new DateTime("25-06-02");
-$cleaningOption = false;
-
-// création de la réservation (paramètres nécessaires car la fonction "__construct" a des paramètres pour fonctionner)
-$reservation = new Reservation($name, $place, $startDate, $endDate, $cleaningOption);
-
-// Appel de la fonction "pay" sur l'objet "reservation" pour payer la réservation
-$reservation->pay();
-
-// Appel de la fonction "leaveComment" sur l'objet "reservation" pour commenter après avoir payé la réservation
-$reservation->leaveComment("Bonne chambre, propre et confortable.");
-
-var_dump($reservation);
-die;
