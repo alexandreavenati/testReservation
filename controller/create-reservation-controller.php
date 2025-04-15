@@ -5,7 +5,7 @@ require_once('../model/reservation-repository.php');
 
 // préparation pour envoyer un message (vide ici)
 $errorMessage = "";
-$reservationForUser = findReservationForUser();
+
 
 // Vérifie l'envoi du formulaire
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -37,5 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $errorMessage = $e->getMessage();
     }
 }
+
+$reservationForUser = findReservationForUser();
 
 require_once('../view/create-reservation-view.php');
