@@ -1,6 +1,7 @@
 <?php
 require_once('../config.php');
 require_once('../model/reservation-model.php');
+require_once('../model/reservation-repository.php');
 
 // préparation pour envoyer un message (vide ici)
 $reservation = null;
@@ -28,10 +29,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         // création de la réservation
         $reservation = new Reservation($name, $place, $startDate, $endDate, $cleaningOption);
+        persistReservation($reservation);
 
     } catch (Exception $e) {
-        
-        // Sinon le message de l'Exception du model est transmis
+
+        // Sinon il y a une erreur et le message de l'Exception du model est transmis
         $errorMessage = $e->getMessage();
     }
 }
