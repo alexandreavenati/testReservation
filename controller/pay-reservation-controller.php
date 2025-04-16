@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // de la classe "Reservation")
         if ($reservationForUser && $reservationForUser instanceof Reservation) {
 
-            // Appel de la méthode pour annuler la réservation de l'utilisateur depuis le model
+            // Appel de la méthode pour payer la réservation de l'utilisateur depuis le model
             $reservationForUser->pay();
             persistReservation($reservationForUser);
 

@@ -6,7 +6,7 @@
 
     <?php require_once('partial/_resume-reservation.php'); ?>
 
-    <!-- Création d'un formulaire pour annuler la réservation-->
+    <!-- Création d'un formulaire pour payer la réservation-->
     <form method="POST">
 
         <div>
