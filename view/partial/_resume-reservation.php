@@ -8,5 +8,8 @@
             <p><strong>Option de ménage : <?php echo $reservationForUser->cleaningOption ? "oui" : "non"; ?></strong></p>
             <p><strong>Prix total : <?php echo $reservationForUser->totalPrice ?></strong></p>
             <p><strong>Statut : "<?php echo $reservationForUser->status ?>"</strong></p>
+            <?php if (isset($message)) { ?>
+                <h3><?php echo $message; ?></h3>
+            <?php } ?>
         </div>
     <?php } ?>

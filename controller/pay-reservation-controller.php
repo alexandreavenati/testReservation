@@ -1,12 +1,10 @@
-<?php
+<?php 
 require_once('../config.php');
-require_once('../model/reservation-repository.php');
 require_once('../model/reservation-model.php');
+require_once('../model/reservation-repository.php');
 
-// Je récupère la réservation créée par l'utilisateur si elle existe et la stocke dans une variable
 $reservationForUser = findReservationForUser();
 
-// Récupère la requête en méthode POST de la session si il y en a une
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     try {
 
@@ -17,14 +15,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($reservationForUser && $reservationForUser instanceof Reservation) {
 
             // Appel de la méthode pour annuler la réservation de l'utilisateur depuis le model
-            $reservationForUser->cancel();
+            $reservationForUser->pay();
             persistReservation($reservationForUser);
 
-            $message = "La réservation a été annulée.";
+            $message = "La réservation a été payée.";
         }
     } catch (Exception $e) {
         $errorMessage = $e->getMessage();
     }
 }
 
-require_once('../view/cancel-reservation-view.php');
+require_once('../view/pay-reservation-view.php');
