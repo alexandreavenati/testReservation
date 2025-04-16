@@ -10,8 +10,8 @@ $reservationForUser = findReservationForUser();
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     try {
 
-        // permet de vérifier si une variable est un objet et si cet objet est une instance d'une classe précise 
-        // (ici instanceof vérifie si "reservationForUser" est un objet et si "reservationForUser" est une instance
+        // permet de vérifier l'existence de l'objet "reservationForUser" et si cet objet est une instance d'une 
+        // classe précise (ici instanceof vérifie si "reservationForUser" est un objet et si "reservationForUser" est une instance
         // de la classe "Reservation")
         if ($reservationForUser && $reservationForUser instanceof Reservation) {
 
