@@ -4,12 +4,13 @@ require_once('../config.php');
 // recup l'url actuelle
 $requestUri = $_SERVER['REQUEST_URI'];
 
-// découpe l'url
+// découpe l'url pour prendre que la fin
 $uri = parse_url($requestUri, PHP_URL_PATH);
-// remplace 
+// remplace la fin de l'url
 $endUri = str_replace('/reservation/public', '', $uri);
 $endUri = trim($endUri, '/');
 
+// si il n'y a rien ça amène sur la page d'accueil sinon ça amène sur la page controller correspondante
 if ($endUri === "") {
     require_once('../controller/home-controller.php');
 } else if ($endUri === "nouvelle-reservation") {
