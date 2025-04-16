@@ -10,7 +10,8 @@ form div {
 
 textarea {
     margin-top: 1%;
-    width: 80%;
+    width: 500%;
     height: 30vh;
     resize: none;
+    overflow: scroll;
 }

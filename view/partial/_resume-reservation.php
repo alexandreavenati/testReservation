@@ -13,7 +13,7 @@
         <!-- Commentaire si il y en a un -->
         <div>
             <p><strong>Votre commentaire :</strong></p>
-            <p><?php echo $reservationForUser->comment; ?></p>
+            <p><?php echo nl2br($reservationForUser->comment); ?></p>
         </div>
     <?php } ?>
 

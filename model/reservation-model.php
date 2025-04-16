@@ -114,18 +114,18 @@ class Reservation
         }
 
         // Vérifie la taille du commentaire
-        if (strlen($comment ) < 10) {
+        if (strlen(trim($comment)) < 10) {
             throw new Exception("Votre commentaire est invalide, il doit faire plus de 10 caractères");
         }
 
         // si le statut de la réservation est "PAID" alors on peut passer le statut en "COMMENTED" en ajoutant un commentaire 
         // en paramètre
-        if ($this->status === "PAID") {
+        if ($this->status === "PAID" || $this->status === "COMMENTED") {
             $this->status = "COMMENTED";
             $this->commentedAt = new DateTime();
             $this->comment = $comment;
         } else {
-            throw new Exception("La réservation ne peut pas être commentée si elle n'est pas payée, inexistante ou déjà commentée.");
+            throw new Exception("La réservation ne peut pas être commentée si elle n'est pas payée ou inexistante.");
         }
     }
 }
