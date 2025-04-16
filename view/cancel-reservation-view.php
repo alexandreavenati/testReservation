@@ -4,20 +4,7 @@
 
     <h2>Annuler une réservation</h2>
 
-    <!-- Résumé de la réservation si il y en a une et permet de vérifier si une variable est un objet et si cet objet est une instance d'une classe précise 
-        (ici instanceof vérifie si "reservationForUser" est un objet et si "reservationForUser" est une instance
-        de la classe "Reservation") -->
-    <?php if (!is_null($reservationForUser) && $reservationForUser instanceof Reservation) { ?>
-        <div>
-            <p><strong>Nom : <?php echo $reservationForUser->name; ?></strong></p>
-            <p><strong>Lieu : <?php echo str_replace('_', ' ', $reservationForUser->place); ?></strong></p>
-            <p><strong>Date de début : <?php echo $reservationForUser->startDate->format('d-m-y'); ?></strong></p>
-            <p><strong>Date de fin : <?php echo $reservationForUser->endDate->format('d-m-y'); ?></strong></p>
-            <p><strong>Option de ménage : <?php echo $reservationForUser->cleaningOption ? "oui" : "non"; ?></strong></p>
-            <p><strong>Prix total : <?php echo $reservationForUser->totalPrice ?></strong></p>
-            <p><strong>Statut : "<?php echo $reservationForUser->status ?>"</strong></p>
-        </div>
-    <?php } ?>
+    <?php require_once('partial/_resume-reservation.php'); ?>
 
     <!-- Création d'un formulaire pour annuler la réservation-->
     <form method="POST">
