@@ -85,6 +85,8 @@ class Reservation
         if ($this->status === "CART") {
             $this->status = "CANCELLED";
             $this->cancelledAt = new DateTime();
+        } else {
+            throw new Exception("La réservation ne peut être annulée que si elle est en statut CART ou existante.");
         }
     }
 

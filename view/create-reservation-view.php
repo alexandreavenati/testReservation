@@ -62,6 +62,7 @@
             <p><strong>Date de fin : <?php echo $reservationForUser->endDate->format('d-m-y'); ?></strong></p>
             <p><strong>Option de ménage : <?php echo $reservationForUser->cleaningOption ? "oui" : "non"; ?></strong></p>
             <p><strong>Prix total : <?php echo $reservationForUser->totalPrice ?></strong></p>
+            <p><strong>Statut : "<?php echo $reservationForUser->status ?>"</strong></p>
         </div>
     <?php } ?>
 
