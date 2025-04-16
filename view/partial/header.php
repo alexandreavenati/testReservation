@@ -16,6 +16,7 @@
                 <li><a href="create-reservation-controller.php">Créer une réservation</a></li>
                 <li><a href="cancel-reservation-controller.php">Annuler une réservation</a></li>
                 <li><a href="pay-reservation-controller.php">Payer une réservation</a></li>
+                <li><a href="comment-reservation-controller.php">Commenter la réservation</a></li>
             </ul>
         </nav>
 
