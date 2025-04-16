@@ -15,6 +15,8 @@ function findReservationForUser() {
 
         // Si oui il la retourne
         return $_SESSION["reservation"];
+    } else {
+        return null;
     }
 }
 

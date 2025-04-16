@@ -14,6 +14,7 @@
             <ul>
                 <li><a href="home-controller.php">Accueil</a></li>
                 <li><a href="create-reservation-controller.php">Créer une réservation</a></li>
+                <li><a href="cancel-reservation-controller.php">Annuler une réservation</a></li>
             </ul>
         </nav>
 
