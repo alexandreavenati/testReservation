@@ -96,6 +96,8 @@ class Reservation
         if ($this->status === "CART") {
             $this->status = "PAID";
             $this->paidAt = new DateTime();
+        } else {
+            throw new Exception("La réservation ne peut pas être payée si elle n'est pas en statu CART ou existante.");
         }
     }
 
