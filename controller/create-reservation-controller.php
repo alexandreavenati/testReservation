@@ -16,6 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Vérification de l'existence de 'place' dans $_POST avant d'y accéder
     // "?" est un opérateur ternaire (forme abrégée d'une instruction conditionnelle "if/else"
     // qui permet de rendre le code plus compact)
+    // Si il true il affiche le contenu de $_POST['place'] si false il affiche rien ('')
     $place = isset($_POST['place']) ? $_POST['place'] : '';
 
     // Récupération des dates

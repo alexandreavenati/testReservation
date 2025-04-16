@@ -21,16 +21,6 @@
 
     </form>
 
-
-
-    <?php if (isset($reservationForUser->comment)) { ?>
-        <!-- Commentaire si il y en a un -->
-        <div>
-            <h3>Votre commentaire :</h3>
-            <p><?php echo $reservationForUser->comment; ?></p>
-        </div>
-    <?php } ?>
-
     <?php if (isset($errorMessage)) { ?>
         <!-- Message d'erreur si il n'y a pas de commentaire valide -->
         <div>

@@ -114,7 +114,7 @@ class Reservation
         }
 
         // Vérifie la taille du commentaire
-        if (strlen($comment < 10)) {
+        if (strlen($comment ) < 10) {
             throw new Exception("Votre commentaire est invalide, il doit faire plus de 10 caractères");
         }
 

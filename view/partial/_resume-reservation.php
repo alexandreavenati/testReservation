@@ -9,6 +9,14 @@
         <p><strong>Prix total : <?php echo $reservationForUser->totalPrice ?></strong></p>
         <p><strong>Statut : "<?php echo $reservationForUser->status ?>"</strong></p>
 
+        <?php if (isset($reservationForUser->comment)) { ?>
+        <!-- Commentaire si il y en a un -->
+        <div>
+            <p><strong>Votre commentaire :</strong></p>
+            <p><?php echo $reservationForUser->comment; ?></p>
+        </div>
+    <?php } ?>
+
         <?php if (isset($message)) { ?>
             <h3><?php echo $message; ?></h3>
         <?php } ?>

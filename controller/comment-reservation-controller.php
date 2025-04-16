@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Récupère le commentaire et le stocke
             $comment = $_POST['comment'];
 
-            // Appel de la méthode pour commenter la réservation de l'utilisateur  en utilisant le commentaire récupéré
+            // Appel de la méthode pour commenter la réservation de l'utilisateur en utilisant le commentaire récupéré
             $reservationForUser->leaveComment($comment);
             persistReservation($reservationForUser);
 

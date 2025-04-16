@@ -1,3 +1,16 @@
 body {
     font-family: Arial, Helvetica, sans-serif;
 }
+
+form div {
+    display: flex;
+    align-items: center;
+    margin-top: 1%;
+}
+
+textarea {
+    margin-top: 1%;
+    width: 80%;
+    height: 30vh;
+    resize: none;
+}
