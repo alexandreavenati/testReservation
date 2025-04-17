@@ -2,61 +2,71 @@
 // Permet de sauvegarder la réservation
 function persistReservation($reservation)
 {
+    // connection à la BDD
+    $pdo = connectToDB();
 
-    if (session_status() === PHP_SESSION_NONE) {
+    // stockage des dates pour les insérer dans VALUES
+    $startDateFormatted = $reservation->startDate->format('Y-m-d');
+    $endDateFormatted = $reservation->endDate->format('Y-m-d');
+    $bookedAtDateFormatted = $reservation->bookedAt->format('Y-m-d');
 
-        session_start();
-
-        // connection à la BDD
-        $pdo = connectToDB();
-
-        // stockage des dates pour les insérer dans VALUES
-        $startDateFormatted = $reservation->startDate->format('d-m-y');
-        $endDateFormatted = $reservation->endDate->format('d-m-y');
-        $bookedAtDateFormatted = $reservation->bookedAt->format('d-m-y');
-
-        // Insérer les données dans la BDD, dans le tableau reservation
-        $query = "INSERT INTO reservation (nom, place, start_date, end_date, night_price, cleaning_option, total_price, status, booked_at)
-                VALUES
+    // Insérer les données dans la BDD, dans le tableau reservation
+    $query = "INSERT INTO reservation (nom, place, start_date, end_date, night_price, cleaning_option, total_price, status, booked_at)
+            VALUES
                 (
-                '$reservation->name', 
-                '$reservation->place',
-                '$startDateFormatted', 
-                '$endDateFormatted', 
-                $reservation->nightPrice, 
-                $reservation->cleaningOption, 
-                $reservation->totalPrice, 
-                '$reservation->status', 
-                '$bookedAtDateFormatted'
-                )";
+            '$reservation->name', 
+            '$reservation->place',
+            '$startDateFormatted', 
+            '$endDateFormatted', 
+            $reservation->nightPrice, 
+            $reservation->cleaningOption, 
+            $reservation->totalPrice, 
+            '$reservation->status', 
+            '$bookedAtDateFormatted'
+            )";
 
-        $pdo->query($query);
-
-    }
-
-    // Sauvegarde la dernière réservation de la session dans une variable
-    $_SESSION["reservation"] = $reservation;
+    $pdo->query($query);
 }
 
 // Cherche si une réservation existe
-function findReservationForUser()
-{
+function findReservationForUser() {
 
-    // Vérifie le statut de la session (lancé ou pas lancé)
-    if (session_status() === PHP_SESSION_NONE) {
+	// Je me connecte à la BDD
+	$pdo = connectToDB();
 
-        // Si pas lancé, lance une session
-        session_start();
-        
-    }
 
-    // Vérifie si il y a une réservation dans la session
-    if (array_key_exists("reservation", $_SESSION)) {
+	// je fait une demande SQL à ma BDD qui récupère la dernière réservation au nom de David Robert
+	// trié par id descendant
+	$query = "SELECT * FROM `reservation` 
+				WHERE nom = 'David Robert'
+				ORDER BY id DESC
+				LIMIT 1";
 
-        // Si oui il la retourne
-        return $_SESSION["reservation"];
-    } else {
-        return null;
-    }
+	// j'execute la requête et je récupère les données sous forme de tableau
+	$result = $pdo->query($query, PDO::FETCH_ASSOC);
+
+	$reservation = $result->fetch();
+    
+	return $reservation;
 }
 
+
+
+
+/**
+* Permettrait de récupérer toutes les réservations 
+* function findAllReservations() {
+*
+*	// Trouver toutes les réservation dont le nom est David Robert
+*	// Récupérer la dernère par date de création
+*	$pdo = connectToDB();
+*
+*	$query = "SELECT * FROM `reservation` ORDER BY id DESC";
+*
+*	$result = $pdo->query($query, PDO::FETCH_ASSOC);
+*
+*	$reservations = $result->fetchAll();
+*
+*	return $reservations;
+*}
+**/

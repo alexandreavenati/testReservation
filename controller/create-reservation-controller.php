@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $endDate = new DateTime($_POST['endDate']);
 
     // Vérifie si "cleaningOption" est existant et validé puis on change sa valeur en booléen
-    $cleaningOption = isset($_POST['cleaningOption']) && $_POST['cleaningOption'] === "on" ? true : false;
+    $cleaningOption = isset($_POST['cleaningOption']) && $_POST['cleaningOption'] === "on" ? 1 : 0;
 
     try {
 

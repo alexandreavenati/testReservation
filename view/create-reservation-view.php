@@ -53,6 +53,7 @@
         <h3><?php echo $errorMessage; ?></h3>
     </div>
 
+    
     <?php require_once('partial/_resume-reservation.php'); ?>
 
 </section>
