@@ -21,4 +21,6 @@ if ($endUri === "") {
     require_once('../controller/pay-reservation-controller.php');
 } else if ($endUri === "comment-reservation") {
     require_once('../controller/comment-reservation-controller.php');
+} else {
+    require_once('../controller/error-404-controller.php');
 }

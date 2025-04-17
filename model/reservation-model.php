@@ -29,8 +29,6 @@ class Reservation
 
     public $comment;
 
-    public $delCommentAt;
-
     // ajout de paramètres sur les valeurs qui ont tendances à changer selon les réservations 
     // (méthode pour réaliser une réservation)
     public function __construct($name, $place, $startDate, $endDate, $cleaningOption)
