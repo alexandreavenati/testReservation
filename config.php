@@ -15,6 +15,3 @@ function connectToDB()
         throw new Exception("Impossible de se connecter à la DB : " . $e->getMessage());
     }
 }
-
-connectToDB();
-var_dump(connectToDB());
